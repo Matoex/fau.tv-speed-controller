@@ -49,7 +49,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     else if (message.message == "get playback speed") {
         let intervalHandler = setInterval(() => {
             if (video === undefined) return;
-            console.log(video.playbackRate)
             chrome.runtime.sendMessage({ "message": "current speed", "speed": video.playbackRate });
             clearInterval(intervalHandler);
         }, 100);

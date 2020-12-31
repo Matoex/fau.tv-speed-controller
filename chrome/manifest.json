@@ -25,6 +25,7 @@
       "16": "images/logo32.png",
       "24": "images/logo32.png",
       "32": "images/logo32.png",
+      "48": "images/logo32.png",
       "128": "images/logo32.png"
     },
     "default_title": "FAU.TV playback speed",
@@ -34,6 +35,7 @@
     "16": "images/logo32.png",
     "24": "images/logo32.png",
     "32": "images/logo32.png",
+    "48": "images/logo32.png",
     "128": "images/logo32.png"
   },
   "permissions": [

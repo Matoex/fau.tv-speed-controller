@@ -7,6 +7,7 @@ const upperPlaybackLimit = 4;
 
 //speed is float
 function setSpeed(speed) {
+    console.log("given speed:" + speed);
     slider.value = speed;
     let valueString = speed.toString();
     if (valueString.indexOf(".") == -1) valueString += ".0";
@@ -27,7 +28,7 @@ getPlaybackSpeed();
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.message == "current speed") {
-        setSpeed(request.getPlaybackSpeed);
+        setSpeed(request.speed);
     }
 });
 
