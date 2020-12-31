@@ -7,7 +7,6 @@ const upperPlaybackLimit = 4;
 
 //speed is float
 function setSpeed(speed) {
-    console.log("given speed:" + speed);
     slider.value = speed;
     let valueString = speed.toString();
     if (valueString.indexOf(".") == -1) valueString += ".0";
@@ -22,7 +21,6 @@ function getPlaybackSpeed() {
             return;
         }
         for (let tab of tabs) {
-            //browser.tabs.sendMessage(tab.id, { "message": "set playback speed", "speed": speed });
             browser.tabs.sendMessage(tab.id, { "message": "get playback speed" });
         }
     });
@@ -53,32 +51,9 @@ slider.addEventListener("input", (e) => {
 });
 
 function updatePlaybackSpeed(speed) {
-    /*
-    browser.tabs.query({ active: true });
-    console.log(gettingSelected);
-    gettingSelected.sendMessage(tab.id, { "message": "set playback speed", "speed": speed });
-*/
-
     browser.tabs.query({ currentWindow: true, active: true }, (tabs) => {
         for (let tab of tabs) {
             browser.tabs.sendMessage(tab.id, { "message": "set playback speed", "speed": speed });
         }
     });
-    /*
-        let querying = browser.tabs.query({ currentWindow: true, active: true });
-        querying.then(sendSetPlaybackSpeeds(speed));
-        */
 }
-/*
-function sendSetPlaybackSpeeds(tabs, speed) {
-    console.log(speed)
-    console.log(tabs)
-    for (let tab of tabs) {
-        browser.tabs.sendMessage(tab.id, { "message": "set playback speed", "speed": speed });
-    }
-
-
-
-}
-
-*/
