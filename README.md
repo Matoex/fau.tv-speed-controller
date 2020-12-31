@@ -14,7 +14,6 @@ If the current tab is not a fau.TV video, the extension icon will appear grayed-
 ## How to install
 
 ### How to install on chrome
-You can  install from this local directory.
 
 - download this repository and unzip it.
 
@@ -36,5 +35,17 @@ after this, the extension will be installed.
 - click on Temporary Extensions->"Load Teporary Add-on..."
 
 - **select the file `manifest.json` in the subdirectory `firefox/`** of previously unziped project folder.
+
+after this, the extension will be installed.
+
+### How to install on Edge
+
+- download this repository and unzip it.
+
+- in your edge browser, open the options menu (three dots at the top right of your screen)->extensions or simply open the URL `edge://extensions/`
+
+- check the "developer options" button at the bottom left of the screen. This will open a menu at the top of your screen.
+
+- click on "Load unpacked" and **select the chrome folder** in the previously unziped project folder.
 
 after this, the extension will be installed.
