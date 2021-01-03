@@ -5,7 +5,6 @@ let resetButton = document.getElementById("resetButton");
 const lowerPlaybackLimit = 0;
 const upperPlaybackLimit = 4;
 
-//speed is float
 function setSpeed(speed) {
     slider.value = speed;
     let valueString = speed.toString();
@@ -53,3 +52,16 @@ function updatePlaybackSpeed(speed) {
         chrome.tabs.sendMessage(tab.id, { "message": "set playback speed", "speed": speed });
     });
 }
+
+copyLinkButton.addEventListener("click", () => {
+    chrome.tabs.getSelected(undefined, (tab) => {
+        chrome.tabs.sendMessage(tab.id, { "message": "get video url" });
+    });
+});
+
+
+downloadVideoButton.addEventListener("click", () => {
+    chrome.tabs.getSelected(undefined, (tab) => {
+        chrome.tabs.sendMessage(tab.id, { "message": "open new Tab" });
+    });
+});

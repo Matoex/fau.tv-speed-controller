@@ -53,4 +53,39 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             clearInterval(intervalHandler);
         }, 100);
     }
+    else if (message.message == "get video url") {
+        let intervalHandler = setInterval(() => {
+            if (video === undefined) return;
+            var videourl = video.src;
+            if (videourl.startsWith("http")) {
+                inject("copyToClipboard(document.getElementsByTagName('video')[0].src);function copyToClipboard(str){ const el = document.createElement('textarea'); el.value = str;el.setAttribute('readonly', ''); el.style.position = 'absolute';   el.style.left = '-9999px'; document.body.appendChild(el); el.select(); document.execCommand('copy');document.body.removeChild(el); } alert('Video URL got copied to your clipboard')");
+            } else if (videourl.startsWith("blob:")) {
+                inject("copyToClipboard(combinedSources[0].sources[0].file);function copyToClipboard(str){ const el = document.createElement('textarea'); el.value = str;el.setAttribute('readonly', ''); el.style.position = 'absolute';   el.style.left = '-9999px'; document.body.appendChild(el); el.select(); document.execCommand('copy');document.body.removeChild(el); } alert('Video URL got copied to your clipboard')");
+            }
+
+            clearInterval(intervalHandler);
+        }, 100);
+    }
+    else if (message.message == "open new Tab") {
+        let intervalHandler = setInterval(() => {
+            if (video === undefined) return;
+            var videourl = video.src;
+            if (videourl.startsWith("http")) {
+
+                inject("window.open(document.getElementsByTagName('video')[0].src, '_blank');")
+            } else if (videourl.startsWith("blob:")) {
+                inject("if (window.confirm('The downloaded File is not a playable video. Do you want to downlaod the video anyway? If it does not download a video file, you can try to copy the video url and open it e.g. in VLC Media player as a Networkstream')){window.open(combinedSources[0].sources[0].file, '_blank');}");
+            }
+
+            clearInterval(intervalHandler);
+        }, 100);
+    }
 });
+
+function inject(source) {
+    const j = document.createElement('script'),
+        f = document.getElementsByTagName('script')[0];
+    j.textContent = source;
+    f.parentNode.insertBefore(j, f);
+    f.parentNode.removeChild(j);
+}

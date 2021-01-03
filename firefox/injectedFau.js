@@ -53,4 +53,34 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
             clearInterval(intervalHandler);
         }, 100);
     }
+    else if (message.message == "get video url") {
+        let intervalHandler = setInterval(() => {
+            if (video === undefined) return;
+            var videourl = video.src;
+            if (videourl.startsWith("http")) {
+                inject('sessionStorage.setItem("videourl", document.getElementsByTagName("video")[0].src);');
+                browser.runtime.sendMessage({ "message": "current videourl", "videourl": sessionStorage.getItem("videourl") });
+            } else if (videourl.startsWith("blob:")) {
+                inject('sessionStorage.setItem("videourl", combinedSources[0].sources[0].file);');
+                browser.runtime.sendMessage({ "message": "current videourl", "videourl": sessionStorage.getItem("videourl") });
+            }
+            clearInterval(intervalHandler);
+        }, 100);
+    }
+    else if (message.message == "open new Tab") {
+        if (message.videourl.includes(".m3u8")) {
+            if (window.confirm("The downloaded File is not a playable video. Do you want to downlaod the video anyway? If it does not download a video file, you can try to copy the video url and open it e.g. in VLC Media player as a Networkstream")) {
+                window.open(message.videourl, '_blank');
+            }
+        }
+        window.open(message.videourl, '_blank');
+    }
 });
+
+function inject(source) {
+    const j = document.createElement('script'),
+        f = document.getElementsByTagName('script')[0];
+    j.textContent = source;
+    f.parentNode.insertBefore(j, f);
+    f.parentNode.removeChild(j);
+}

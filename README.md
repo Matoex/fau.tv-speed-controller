@@ -3,13 +3,37 @@ Adapted version of https://github.com/Jeansidharta/Youtube-Playback-speed-extens
 
 ## The interface
 
-If the current tab is not a fau.TV video, the extension icon will appear grayed-out (chrome)/will not apear (firefox) and will be disabled. Otherwise, clicking it will display a pop-up with a number, a slider and a button named "reset":
+If the current tab is not a fau.TV video, the extension icon will appear grayed-out (chrome)/will not apear (firefox) and will be disabled. 
+
+Otherwise, clicking it will display a pop-up with a number, a slider and three buttons:
 
 - The number displays the current video speed. It will change according to the slider. If you desire a specific speed, you may manually type the number you want. It's maximum precision, however is of 0.1. More decimal numbers will be rounded.
 
-- The slider controls the video speed, going from 0.0 to 4.0
+- The slider controls the video speed, going from 0.0 to 4.0.
 
-- The reset button will set the video speed to 1.0
+- The "reset" button will set the video speed to 1.0.
+
+- The "copy video link" button will copy the video link in your clipboard. You can open this videourl as a networkstre e.g. in VLC Media Player.
+
+- The "download video" button: 
+If the video-url is a m3u8-file, it will warn you and then opens the m3u8 file in a new tab, which will download there. Note: A m3u8 file can not be watched like a normal video!
+
+If the video-url is not a m3u8 file, it will open the video-url in a new tab. Depending on your browser it will start the download immediately or open the raw video in a new tab. Then you can download the video by clicking the right mouse button -> save video as...
+
+
+## If you want to save a m3u8 video as a video-file, you can follow these steps:
+How to download a m3u8-video using VLC media player 
+
+1. copy the video link
+2. open VLC media player
+3. Click Media->Convert/Save... or hit Ctrl+R
+4. Select Network
+5. Paste the videourl
+6. Hit convert/save...
+7. Select a prefered video profile (Video - H.264 + MP3 (MP4) recomended for Videos) and a destination file.
+8. Hit start.
+9. Watch the download progress in the VLC Video Timeline
+10. When the download is finished, you can open your destination file.
 
 ## How to install
 

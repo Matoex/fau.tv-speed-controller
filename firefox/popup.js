@@ -2,6 +2,8 @@ let rangeText = document.getElementById("rangeText");
 let slider = document.getElementById("playbackSlider");
 let resetButton = document.getElementById("resetButton");
 
+let videourl = "undefined";
+
 const lowerPlaybackLimit = 0;
 const upperPlaybackLimit = 4;
 
@@ -22,14 +24,34 @@ function getPlaybackSpeed() {
         }
         for (let tab of tabs) {
             browser.tabs.sendMessage(tab.id, { "message": "get playback speed" });
+
         }
     });
 }
 getPlaybackSpeed();
 
+
+function getVideoUrlOnload() {
+    browser.tabs.query({ "active": true, "status": "complete" }, (tabs) => {
+        if (tabs.length == 0) {
+            setTimeout(getPlaybackSpeed, 100);
+            return;
+        }
+        for (let tab of tabs) {
+            browser.tabs.sendMessage(tab.id, { "message": "get video url" });
+        }
+    });
+}
+getVideoUrlOnload();
+
+
+
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.message == "current speed") {
         setSpeed(request.speed);
+    }
+    if (request.message == "current videourl") {
+        videourl = request.videourl;
     }
 });
 
@@ -56,4 +78,31 @@ function updatePlaybackSpeed(speed) {
             browser.tabs.sendMessage(tab.id, { "message": "set playback speed", "speed": speed });
         }
     });
+}
+
+copyLinkButton.addEventListener("click", () => {
+    copyToClipboard(videourl);
+});
+
+
+downloadVideoButton.addEventListener("click", () => {
+    browser.tabs.query({ currentWindow: true, active: true }, (tabs) => {
+        for (let tab of tabs) {
+            browser.tabs.sendMessage(tab.id, { "message": "open new Tab", "videourl": videourl });
+        }
+    });
+});
+
+
+function copyToClipboard(str) {
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert('Video URL got copied to your clipboard')
 }
