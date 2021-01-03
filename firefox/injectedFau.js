@@ -61,7 +61,7 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 inject('sessionStorage.setItem("videourl", document.getElementsByTagName("video")[0].src);');
                 browser.runtime.sendMessage({ "message": "current videourl", "videourl": sessionStorage.getItem("videourl") });
             } else if (videourl.startsWith("blob:")) {
-                inject('sessionStorage.setItem("videourl", combinedSources[0].sources[0].file);');
+                inject('if(typeof combinedSources != "undefined"){sessionStorage.setItem("videourl", combinedSources[0].sources[0].file);}else{sessionStorage.setItem("videourl", cameraSources[0].sources[0].file);}');
                 browser.runtime.sendMessage({ "message": "current videourl", "videourl": sessionStorage.getItem("videourl") });
             }
             clearInterval(intervalHandler);
