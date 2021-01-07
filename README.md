@@ -1,5 +1,19 @@
 Adapted version of https://github.com/Jeansidharta/Youtube-Playback-speed-extension for the video portal of FAU Erlangen https://www.fau.tv/
 
+# Note
+**Added web.whatsapp.com support, this is beta only.**
+
+**"Copy link" button as well as "Download Video" Button have no functionality on whatsapp.com.**
+
+**Speed getting was eliminated (therefore the Slider is initialized with "-1").**
+
+**Currently only setting the speed works.**
+
+**On setting the speed, the speed of all voice message speeds will be set if the voice message existed before opening the popup.**
+
+**To modify the speed of new voice messages, simply reopen the popup an set the slider again.**
+
+**Getting the correct speed value for setting the slider will be added in the near to far future, but only if there is some demand for it.**
 
 ## The interface
 
