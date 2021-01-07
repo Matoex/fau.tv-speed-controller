@@ -12,6 +12,14 @@
             "js": [
                 "injectedFau.js"
             ]
+        },
+        {
+            "matches": [
+                "*://web.whatsapp.com/*"
+            ],
+            "js": [
+                "injectedWA.js"
+            ]
         }
     ],
     "background": {
