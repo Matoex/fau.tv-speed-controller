@@ -21,7 +21,7 @@ If the video-url is a m3u8-file, it will warn you and then opens the m3u8 file i
 If the video-url is not a m3u8 file, it will open the video-url in a new tab. Depending on your browser it will start the download immediately or open the raw video in a new tab. Then you can download the video by clicking the right mouse button -> save video as...
 
 ## How to speed up Tafelübungen
-Open your browser console on a AuD Tafelübung and paste the content of /tafeluebungsspeeder.js in.
+Open your browser console on a AuD Tafelübung and paste the content of [tafeluebungsslider.js](tafeluebungsspeeder.js) in.
 There you have the following features:
 
 #### In the bottom line you have
