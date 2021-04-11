@@ -20,6 +20,19 @@ If the video-url is a m3u8-file, it will warn you and then opens the m3u8 file i
 
 If the video-url is not a m3u8 file, it will open the video-url in a new tab. Depending on your browser it will start the download immediately or open the raw video in a new tab. Then you can download the video by clicking the right mouse button -> save video as...
 
+## How to speed up Tafelübungen
+Open your browser console on a AuD Tafelübung and paste the content of [tafeluebungsslider.js](tafeluebungsspeeder.js) in.
+There you have the following features:
+
+#### In the bottom line you have
+![](https://matoex.uber.space/xbackbone/QaQI5/mUluraZa54.png/raw)
+
+#### Change the Speed (audio or video content):
+Reset to 1x with "s"
+speed += 0.25  with "d"
+speed -= 0.25  with "a"
+
+#### Slides with no audio will be skipped in 5s/current speed
 
 ## If you want to save a m3u8 video as a video-file, you can follow these steps:
 How to download a m3u8-video using VLC media player 
