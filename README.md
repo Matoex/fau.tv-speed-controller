@@ -1,5 +1,6 @@
 Adapted version of https://github.com/Jeansidharta/Youtube-Playback-speed-extension for the video portal of FAU Erlangen https://www.fau.tv/
 
+# The Firefox Version is lagging some features behind (e.g. PFP, Hotkeys), this will be added soon
 
 ## The interface
 
@@ -20,6 +21,12 @@ If the video-url is a m3u8-file, it will warn you and then opens the m3u8 file i
 
 If the video-url is not a m3u8 file, it will open the video-url in a new tab. Depending on your browser it will start the download immediately or open the raw video in a new tab. Then you can download the video by clicking the right mouse button -> save video as...
 
+## Hotkeys
+You can change the speed without opening the extension using the following hotkeys:
+Reset to 1x with "s"
+speed += 0.25  with "d"
+speed -= 0.25  with "a"
+
 ## How to speed up Tafelübungen
 Open your browser console on a AuD Tafelübung and paste the content of [tafeluebungsslider.js](tafeluebungsspeeder.js) in.
 There you have the following features:
@@ -27,7 +34,7 @@ There you have the following features:
 #### In the bottom line you have
 ![](https://matoex.uber.space/xbackbone/QaQI5/mUluraZa54.png/raw)
 
-#### Change the Speed (audio or video content):
+#### Change the Speed:
 Reset to 1x with "s"
 speed += 0.25  with "d"
 speed -= 0.25  with "a"
@@ -86,3 +93,10 @@ after this, the extension will be installed.
 - click on "Load unpacked" and **select the chrome folder** in the previously unziped project folder.
 
 after this, the extension will be installed.
+
+
+#### Changelog
+
+##### 2021-04-12
+- Added Support for H5P Videos like in PFP
+- Added Hotkeys (A,S,D)

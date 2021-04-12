@@ -1,5 +1,5 @@
 body {
-    background-color: #2c3e50;
+    background-color: #25303b;
     color: white
 }
 
@@ -20,14 +20,14 @@ button {
     padding: 10px 15px;
     transition: border .25s linear, color .25s linear, background-color .25s linear;
     color: white;
-    background-color: #405569;
+    background-color: #434b53;
     margin-top: 10px;
     width: 180px;
 }
 
 .rangeText {
     text-align: center;
-    background-color: #2c3e50;
+    background-color: #434b53;
     color: white;
     border: 0px;
     font-size: 24px;

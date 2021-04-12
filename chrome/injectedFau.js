@@ -2,28 +2,37 @@ let video;
 let targetVideoSpeed = 1;
 
 function urlUpdate() {
-    let index = location.href.indexOf("clip");
+    if (video) return;
     chrome.runtime.sendMessage({ "message": "inactivate_icon" });
-    video = undefined;
-    if (index != -1) {
-        let intervalHandler;
-        function findVideo() {
-            video = document.getElementsByTagName("video")[0];
-            if (video !== undefined) {
-                clearInterval(intervalHandler);
-                chrome.runtime.sendMessage({ "message": "activate_icon" });
-                video.playbackRate = targetVideoSpeed;
-                let videoVar = video;
-                video.addEventListener("play", () => {
-                    videoVar.playbackRate = targetVideoSpeed;
-                });
-            }
-        }
-        intervalHandler = setInterval(findVideo, 1000);
-        findVideo();
+    video = document.querySelector("video");
+    let h5pIframeParent = document.querySelector("iframe.h5p-iframe");
+    let h5pIframeDoc = h5pIframeParent?.contentDocument;
+    if (!video && h5pIframeDoc) {
+        video = h5pIframeDoc.querySelector("video");
+
+        var iframe = document.getElementsByTagName('iframe')[0],
+            iDoc = iframe.contentWindow     // sometimes glamorous naming of variable
+                || iframe.contentDocument;  // makes your code working :)
+        if (iDoc.document) {
+            iDoc = iDoc.document;
+            iDoc.body.addEventListener('keyup', (e) => {
+                onASDKeyListener(e);
+            });
+        };
+    }
+    if (video) {
+        chrome.runtime.sendMessage({ "message": "activate_icon" });
+        video.playbackRate = targetVideoSpeed;
+        let videoVar = video;
+        video.addEventListener("play", () => {
+            videoVar.playbackRate = targetVideoSpeed;
+        });
     }
 }
 
+
+setInterval(urlUpdate, 1000);
+/*
 {
     let lastURL;
     function verityURL() {
@@ -35,16 +44,34 @@ function urlUpdate() {
     setInterval(verityURL, 1000);
     verityURL();
 }
+*/
+
+{
+    document.addEventListener('keyup', (e) => {
+        onASDKeyListener(e);
+    });
+}
+
+function onASDKeyListener(e) {
+    console.log(e.code)
+    if (e.code === "KeyD") targetVideoSpeed += 0.25
+    else if (e.code === "KeyA") targetVideoSpeed -= 0.25
+    else if (e.code === "KeyS") targetVideoSpeed = 1;
+    //  else if (e.code === "Space") video.paused ? video.play() : video.pause();;
+    setVideoSpeed(targetVideoSpeed);
+
+}
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.message == "set playback speed") {
         let speed = message.speed;
-        if (speed > 16 || speed < 0) {
-            console.log(`invalid speed ${speed}`);
-            return;
-        }
-        targetVideoSpeed = speed;
-        video.playbackRate = speed;
+        setVideoSpeed(speed);
+    } else if (message.message == "set playback speed up") {
+        setVideoSpeed(targetVideoSpeed + 0.25);
+    } else if (message.message == "set playback speed down") {
+        setVideoSpeed(targetVideoSpeed - 0.25);
+    } else if (message.message == "set playback speed one") {
+        setVideoSpeed(1);
     }
     else if (message.message == "get playback speed") {
         let intervalHandler = setInterval(() => {
@@ -88,4 +115,13 @@ function inject(source) {
     j.textContent = source;
     f.parentNode.insertBefore(j, f);
     f.parentNode.removeChild(j);
+}
+
+function setVideoSpeed(speed) {
+    if (speed > 16 || speed < 0) {
+        console.log(`invalid speed ${speed}`);
+        return;
+    }
+    targetVideoSpeed = speed;
+    video.playbackRate = speed;
 }

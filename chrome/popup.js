@@ -3,7 +3,7 @@ let slider = document.getElementById("playbackSlider");
 let resetButton = document.getElementById("resetButton");
 
 const lowerPlaybackLimit = 0;
-const upperPlaybackLimit = 4;
+const upperPlaybackLimit = 16;
 
 function setSpeed(speed) {
     slider.value = speed;
@@ -65,3 +65,35 @@ downloadVideoButton.addEventListener("click", () => {
         chrome.tabs.sendMessage(tab.id, { "message": "open new Tab" });
     });
 });
+
+document.addEventListener('keyup', (e) => {
+    let value = parseFloat(rangeText.value);
+    if (e.code === "KeyA") {
+        sendTabMessage("set playback speed down");
+        setSliderAndRangetextValue(value - 0.25);
+    }
+    else if (e.code === "KeyS") {
+        sendTabMessage("set playback speed one");
+        setSliderAndRangetextValue(1);
+    }
+    else if (e.code === "KeyD") {
+        sendTabMessage("set playback speed up");
+        setSliderAndRangetextValue(value + 0.25);
+    }
+});
+
+function sendTabMessage(m) {
+    chrome.tabs.getSelected(undefined, (tab) => {
+        chrome.tabs.sendMessage(tab.id, { "message": m });
+    });
+}
+function setSliderAndRangetextValue(speed) {
+    if (speed > 16 || speed < 0) {
+        console.log(`invalid speed ${speed}`);
+        return;
+    }
+    slider.value = speed;
+    let valueString = speed.toString();
+    if (valueString.indexOf(".") == -1) valueString += ".0";
+    rangeText.value = valueString;
+}
