@@ -53,7 +53,6 @@ setInterval(urlUpdate, 1000);
 }
 
 function onASDKeyListener(e) {
-    console.log(e.code)
     if (e.code === "KeyD") targetVideoSpeed += 0.25
     else if (e.code === "KeyA") targetVideoSpeed -= 0.25
     else if (e.code === "KeyS") targetVideoSpeed = 1;
