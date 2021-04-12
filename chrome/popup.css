@@ -1,6 +1,6 @@
 body {
     background-color: #25303b;
-    color: white
+    color: white;
 }
 
 input[type=number]::-webkit-inner-spin-button,

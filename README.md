@@ -1,7 +1,5 @@
 Adapted version of https://github.com/Jeansidharta/Youtube-Playback-speed-extension for the video portal of FAU Erlangen https://www.fau.tv/
 
-## The Firefox Version is lagging some features behind (e.g. PFP, Hotkeys), this will be added soon
-
 ## The interface
 
 If the current tab is not a fau.TV video, the extension icon will appear grayed-out (chrome)/will not apear (firefox) and will be disabled. 
@@ -74,6 +72,13 @@ after this, the extension will be installed.
 
 
 ### How to install on firefox
+
+Note:
+
+Downloading and copying the Videourl is currently disabled in Firefox.
+
+Firefox may not support audio if the speed is above x4.
+
 
 - download this repository and unzip it.
 

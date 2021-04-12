@@ -2,12 +2,9 @@ let rangeText = document.getElementById("rangeText");
 let slider = document.getElementById("playbackSlider");
 let resetButton = document.getElementById("resetButton");
 
-let videourl = "undefined";
-
 const lowerPlaybackLimit = 0;
-const upperPlaybackLimit = 4;
+const upperPlaybackLimit = 16;
 
-//speed is float
 function setSpeed(speed) {
     slider.value = speed;
     let valueString = speed.toString();
@@ -80,9 +77,9 @@ function updatePlaybackSpeed(speed) {
     });
 }
 
-copyLinkButton.addEventListener("click", () => {
-    copyToClipboard(videourl);
-});
+//copyLinkButton.addEventListener("click", () => {
+// copyToClipboard(videourl);
+//});
 
 
 downloadVideoButton.addEventListener("click", () => {
@@ -93,16 +90,48 @@ downloadVideoButton.addEventListener("click", () => {
     });
 });
 
-
 function copyToClipboard(str) {
-    const el = document.createElement('textarea');
-    el.value = str;
-    el.setAttribute('readonly', '');
-    el.style.position = 'absolute';
-    el.style.left = '-9999px';
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    alert('Video URL got copied to your clipboard')
+    // const el = document.createElement('textarea');
+    // el.value = str;
+    // el.setAttribute('readonly', '');
+    // el.style.position = 'absolute';
+    // el.style.left = '-9999px';
+    // document.body.appendChild(el);
+    // el.select();
+    // document.execCommand('copy');
+    // document.body.removeChild(el);
+    // alert('Video URL got copied to your clipboard')
+}
+
+document.addEventListener('keyup', (e) => {
+    let value = parseFloat(rangeText.value);
+    if (e.code === "KeyA") {
+        sendTabMessage("set playback speed down");
+        setSliderAndRangetextValue(value - 0.25);
+    } else if (e.code === "KeyS") {
+        sendTabMessage("set playback speed one");
+        setSliderAndRangetextValue(1);
+    } else if (e.code === "KeyD") {
+        sendTabMessage("set playback speed up");
+        setSliderAndRangetextValue(value + 0.25);
+    }
+});
+
+function sendTabMessage(m) {
+    browser.tabs.query({ currentWindow: true, active: true }, (tabs) => {
+        for (let tab of tabs) {
+            browser.tabs.sendMessage(tab.id, { "message": m });
+        }
+    });
+}
+
+function setSliderAndRangetextValue(speed) {
+    if (speed > 16 || speed < 0) {
+        console.log(`invalid speed ${speed}`);
+        return;
+    }
+    slider.value = speed;
+    let valueString = speed.toString();
+    if (valueString.indexOf(".") == -1) valueString += ".0";
+    rangeText.value = valueString;
 }

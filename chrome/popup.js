@@ -67,12 +67,10 @@ document.addEventListener('keyup', (e) => {
     if (e.code === "KeyA") {
         sendTabMessage("set playback speed down");
         setSliderAndRangetextValue(value - 0.25);
-    }
-    else if (e.code === "KeyS") {
+    } else if (e.code === "KeyS") {
         sendTabMessage("set playback speed one");
         setSliderAndRangetextValue(1);
-    }
-    else if (e.code === "KeyD") {
+    } else if (e.code === "KeyD") {
         sendTabMessage("set playback speed up");
         setSliderAndRangetextValue(value + 0.25);
     }
@@ -83,6 +81,7 @@ function sendTabMessage(m) {
         chrome.tabs.sendMessage(tab.id, { "message": m });
     });
 }
+
 function setSliderAndRangetextValue(speed) {
     if (speed > 16 || speed < 0) {
         console.log(`invalid speed ${speed}`);
