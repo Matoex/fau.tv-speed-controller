@@ -14,12 +14,8 @@ function setSpeed(speed) {
 }
 
 function getPlaybackSpeed() {
-    chrome.tabs.query({ "active": true, "status": "complete" }, (tabs) => {
-        if (tabs.length == 0) {
-            setTimeout(getPlaybackSpeed, 100);
-            return;
-        }
-        chrome.tabs.sendMessage(tabs[0].id, { "message": "get playback speed" });
+    chrome.tabs.getSelected(undefined, (tab) => {
+        chrome.tabs.sendMessage(tab.id, { "message": "get playback speed" });
     });
 }
 getPlaybackSpeed();

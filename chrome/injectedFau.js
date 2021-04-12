@@ -1,50 +1,43 @@
 let video;
 let targetVideoSpeed = 1;
+let status;
 
 function urlUpdate() {
-    if (video) return;
-    chrome.runtime.sendMessage({ "message": "inactivate_icon" });
+    if (!!video) return;
     video = document.querySelector("video");
     let h5pIframeParent = document.querySelector("iframe.h5p-iframe");
     let h5pIframeDoc = h5pIframeParent?.contentDocument;
+
     if (!video && h5pIframeDoc) {
         video = h5pIframeDoc.querySelector("video");
-
         var iframe = document.getElementsByTagName('iframe')[0],
             iDoc = iframe.contentWindow     // sometimes glamorous naming of variable
                 || iframe.contentDocument;  // makes your code working :)
         if (iDoc.document) {
             iDoc = iDoc.document;
-            iDoc.body.addEventListener('keyup', (e) => {
+            iDoc.body?.addEventListener('keyup', (e) => {
                 onASDKeyListener(e);
             });
         };
     }
     if (video) {
-        chrome.runtime.sendMessage({ "message": "activate_icon" });
         video.playbackRate = targetVideoSpeed;
         let videoVar = video;
         video.addEventListener("play", () => {
             videoVar.playbackRate = targetVideoSpeed;
         });
     }
-}
-
-
-setInterval(urlUpdate, 1000);
-/*
-{
-    let lastURL;
-    function verityURL() {
-        if (location.href != lastURL) {
-            urlUpdate();
-            lastURL = location.href;
-        }
+    if (!status && !!video) {
+        chrome.runtime.sendMessage({ "message": "activate_icon" });
+        status = true;
+        clearInterval(videoSearcher)
+    } else if (!status) {
+        chrome.runtime.sendMessage({ "message": "inactivate_icon" });
     }
-    setInterval(verityURL, 1000);
-    verityURL();
 }
-*/
+
+urlUpdate();
+var videoSearcher = setInterval(urlUpdate, 1000);
 
 {
     document.addEventListener('keyup', (e) => {
@@ -117,6 +110,7 @@ function inject(source) {
 }
 
 function setVideoSpeed(speed) {
+    if (!video) return;
     if (speed > 16 || speed < 0) {
         console.log(`invalid speed ${speed}`);
         return;
