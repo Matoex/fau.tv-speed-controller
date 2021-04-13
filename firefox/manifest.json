@@ -23,21 +23,21 @@
     },
     "page_action": {
         "default_icon": {
-            "16": "images/logo32.png",
-            "24": "images/logo32.png",
+            "16": "images/logo16.png",
+            "24": "images/logo24.png",
             "32": "images/logo32.png",
-            "48": "images/logo32.png",
-            "128": "images/logo32.png"
+            "48": "images/logo48.png",
+            "128": "images/logo128.png"
         },
         "default_title": "FAU.TV playback speed",
         "default_popup": "popup.html"
     },
     "icons": {
-        "16": "images/logo32.png",
-        "24": "images/logo32.png",
+        "16": "images/logo16.png",
+        "24": "images/logo24.png",
         "32": "images/logo32.png",
-        "48": "images/logo32.png",
-        "128": "images/logo32.png"
+        "48": "images/logo48.png",
+        "128": "images/logo128.png"
     },
     "permissions": [
         "activeTab",
