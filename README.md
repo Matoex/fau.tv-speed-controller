@@ -28,6 +28,10 @@ speed += 0.25  with "d"
 
 speed -= 0.25  with "a"
 
+-10s with "j"
+
++10s with "k"
+
 ## How to speed up AuD-Tafelübungen
 Open your browser console on a AuD Tafelübung and paste the content of [tafeluebungsslider.js](tafeluebungsspeeder.js) in.
 There you have the following features:
@@ -104,6 +108,10 @@ after this, the extension will be installed.
 
 
 ## Changelog
+
+##### 2021-04-13
+- Changed profile picture
+- added +-10s with j/k buttons (currently only supported on the viewed page itself, not on the opend popup) 
 
 ##### 2021-04-12
 - Added Support for H5P Videos like in PFP

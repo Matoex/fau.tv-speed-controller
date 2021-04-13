@@ -46,10 +46,19 @@ var videoSearcher = setInterval(urlUpdate, 1000);
 }
 
 function onASDKeyListener(e) {
+    if (!video) return;
     if (e.code === "KeyD") targetVideoSpeed += 0.25
     else if (e.code === "KeyA") targetVideoSpeed -= 0.25
     else if (e.code === "KeyS") targetVideoSpeed = 1;
-    //  else if (e.code === "Space") video.paused ? video.play() : video.pause();;
+    else if (e.code === "KeyJ") {
+        video.currentTime -= 10;
+        return;
+    }
+    else if (e.code === "KeyK") {
+        video.currentTime += 10;
+        return;
+    }
+    // else if (e.code === "Space") video.paused ? video.play() : video.pause();;
     setVideoSpeed(targetVideoSpeed);
 
 }

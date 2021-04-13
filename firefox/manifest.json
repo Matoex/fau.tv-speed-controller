@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "FAU.TV playback speed controller",
     "description": "Controls the playback speed of your FAU.tv video",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "Matthias Bretting",
     "content_scripts": [
         {
