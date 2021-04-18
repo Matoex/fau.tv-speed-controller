@@ -2,6 +2,11 @@ let video;
 let targetVideoSpeed = 1;
 let status;
 
+//Edit homepage link to desktop link
+if (document.getElementsByTagName("title")[0].text.startsWith("StudOn")) {
+    document.getElementsByClassName("navbar-brand")[0].href = "https://www.studon.fau.de/studon/ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems"
+}
+
 function urlUpdate() {
     if (!!video) return;
     video = document.querySelector("video");
