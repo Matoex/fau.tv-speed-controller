@@ -1,132 +1,183 @@
-[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/gorhill/uBlock/blob/master/LICENSE.txt)
-
-Control the playback speed of your FAU.tv videos.
-***
-
+<h1 align="center">🚀 web-extension-starter</h1>
+<p align="center">Web Extension starter to build "Write Once Run on Any Browser" extension</p>
+<div align="center">
+  <a href="https://travis-ci.com/abhijithvijayan/web-extension-starter">
+    <img src="https://travis-ci.com/abhijithvijayan/web-extension-starter.svg?branch=react-typescript" alt="Travis Build" />
+  </a>
+  </a>
+  <a href="https://david-dm.org/abhijithvijayan/web-extension-starter">
+    <img src="https://img.shields.io/david/abhijithvijayan/web-extension-starter.svg?colorB=orange" alt="DEPENDENCIES" />
+  </a>
+  <a href="https://github.com/abhijithvijayan/web-extension-starter/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/abhijithvijayan/web-extension-starter.svg" alt="LICENSE" />
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Check%20out%20web-extension-starter%21%20by%20%40_abhijithv%0A%0AWeb%20Extension%20starter%20to%20build%20%22Write%20Once%20Run%20on%20Any%20Browser%22%20extension.%20https%3A%2F%2Fgithub.com%2Fabhijithvijayan%2Fweb-extension-starter%0A%0A%23javascript%20%23react%20%23typescript%20%23sass%20%23webextension%20%23chrome%20%23firefox%20%23opera">
+     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="TWEET" />
+  </a>
+</div>
+<h3 align="center">🙋‍♂️ Made by <a href="https://twitter.com/_abhijithv">@abhijithvijayan</a></h3>
 <p align="center">
-<a href="https://addons.mozilla.org/en-US/firefox/addon/fau-tv-playback-speed-control/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get uBlock Origin for Firefox"></a> 
-<a href="https://chrome.google.com/webstore/detail/fautv-playback-speed-cont/hbllafnglaponcppfpknohheppjhdhbk"><img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get uBlock Origin for Chromium"></a>
-  
-***
+  Donate:
+  <a href="https://www.paypal.me/iamabhijithvijayan" target='_blank'><i><b>PayPal</b></i></a>,
+  <a href="https://www.patreon.com/abhijithvijayan" target='_blank'><i><b>Patreon</b></i></a>
+</p>
+<p align="center">
+  <a href='https://www.buymeacoffee.com/abhijithvijayan' target='_blank'>
+    <img height='36' style='border:0px;height:36px;' src='https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png' border='0' alt='Buy Me a Coffee' />
+  </a>
+</p>
+<hr />
 
+❤️ it? ⭐️ it on [GitHub](https://github.com/abhijithvijayan/web-extension-starter) or [Tweet](https://twitter.com/intent/tweet?text=Check%20out%20web-extension-starter%21%20by%20%40_abhijithv%0A%0AWeb%20Extension%20starter%20to%20build%20%22Write%20Once%20Run%20on%20Any%20Browser%22%20extension.%20https%3A%2F%2Fgithub.com%2Fabhijithvijayan%2Fweb-extension-starter%0A%0A%23javascript%20%23react%20%23typescript%20%23sass%20%23webextension%20%23chrome%20%23firefox%20%23opera) about it.
 
+🧙‍♂️ **React + TypeScript** = [This](https://github.com/abhijithvijayan/web-extension-starter/tree/react-typescript) branch
 
+😨 **React + JavaScript** = Checkout [react-javascript](https://github.com/abhijithvijayan/web-extension-starter/tree/react-javascript) branch
 
-Adapted version of https://github.com/Jeansidharta/Youtube-Playback-speed-extension for the video portal of FAU Erlangen https://www.fau.tv/
+👶🏼 **HTML + JavaScript** = Checkout [master](https://github.com/abhijithvijayan/web-extension-starter/tree/master) branch
 
-## The interface
+## Features
 
-If the current tab is not a fau.TV video, the extension icon will appear grayed-out (chrome)/will not apear (firefox) and will be disabled. 
+- Cross Browser Support (Web-Extensions API)
+- Browser Tailored Manifest generation
+- Automatic build on code changes
+- Auto packs browser specific build files
+- SASS styling
+- TypeScript by default
+- ES6 modules support
+- React UI Library by default
+- Smart reload
 
-Otherwise, clicking it will display a pop-up with a number, a slider and three buttons:
+## Browser Support
 
-- The number displays the current video speed. It will change according to the slider. If you desire a specific speed, you may manually type the number you want. It's maximum precision, however is of 0.1. More decimal numbers will be rounded.
+| [![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](/) | [![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png)](/) | [![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png)](/) | [![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png)](/) | [![Yandex](https://raw.github.com/alrra/browser-logos/master/src/yandex/yandex_48x48.png)](/) | [![Brave](https://raw.github.com/alrra/browser-logos/master/src/brave/brave_48x48.png)](/) | [![vivaldi](https://raw.github.com/alrra/browser-logos/master/src/vivaldi/vivaldi_48x48.png)](/) |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| 49 & later ✔                                                                                  | 52 & later ✔                                                                                     | 36 & later ✔                                                                               | 79 & later ✔                                                                            | Latest ✔                                                                                      | Latest ✔                                                                                   | Latest ✔                                                                                         |
 
-- The slider controls the video speed, going from 0.0 to 4.0.
+## Used by extensions in production that has over 100,000+ users.
 
-- The "reset" button will set the video speed to 1.0.
+- [kutt-extension](https://chrome.google.com/webstore/detail/kutt/pklakpjfiegjacoppcodencchehlfnpd) in [abhijithvijayan/kutt-extension](https://github.com/abhijithvijayan/kutt-extension)
+- [Virtual backgrounds for Google Meet](https://chrome.google.com/webstore/detail/virtual-backgrounds-for-g/ghlkgnalbbkgpdlodjlackgjehofahoc) in [Coderantine/VirtualBackgroundsForWeb](https://github.com/Coderantine/VirtualBackgroundsForWeb)
+- [doubanIMDb](https://chrome.google.com/webstore/detail/doubanimdb/nfibbjnhkbjlgjaojglmmibdjicidini) in [lisongx/doubanIMDb](https://github.com/lisongx/doubanIMDb)
+- [Mooc Assistant](https://chrome.google.com/webstore/detail/mooc-assistant/oebggekgendmoeedkkdkdcdbmfbfeldc) in [unbyte/mooc-assistant](https://github.com/unbyte/mooc-assistant)
 
-- The "copy video link" button will copy the video link in your clipboard. You can open this videourl as a networkstre e.g. in VLC Media Player.
+and many more...
 
-- The "download video" button: 
-If the video-url is a m3u8-file, it will warn you and then opens the m3u8 file in a new tab, which will download there. Note: A m3u8 file can not be watched like a normal video!
+## Use this template
 
-If the video-url is not a m3u8 file, it will open the video-url in a new tab. Depending on your browser it will start the download immediately or open the raw video in a new tab. Then you can download the video by clicking the right mouse button -> save video as...
+Create a new directory and run
 
-## Hotkeys
-You can change the speed without opening the extension using the following hotkeys:
+```
+curl -fsSL https://github.com/abhijithvijayan/web-extension-starter/archive/react-typescript.tar.gz | tar -xz --strip-components=1
+```
 
-Reset to 1x with "s"
+## 🚀 Quick Start
 
-speed += 0.25  with "d"
+Ensure you have
 
-speed -= 0.25  with "a"
+- [Node.js](https://nodejs.org) 10 or later installed
+- [Yarn](https://yarnpkg.com) v1 or v2 installed
 
--10s with "j"
+Then run the following:
 
-+10s with "k"
+- `yarn install` to install dependencies.
+- `yarn run dev:chrome` to start the development server for chrome extension
+- `yarn run dev:firefox` to start the development server for firefox addon
+- `yarn run dev:opera` to start the development server for opera extension
+- `yarn run build:chrome` to build chrome extension
+- `yarn run build:firefox` to build firefox addon
+- `yarn run build:opera` to build opera extension
+- `yarn run build` builds and packs extensions all at once to extension/ directory
 
-## How to speed up AuD-Tafelübungen
-Open your browser console on a AuD Tafelübung and paste the content of [tafeluebungsslider.js](tafeluebungsspeeder.js) in.
-There you have the following features:
+### Development
 
-#### In the bottom line you have
-![](https://matoex.uber.space/xbackbone/QaQI5/mUluraZa54.png/raw)
+- `yarn install` to install dependencies.
+- To watch file changes in development
 
-#### Change the Speed:
-Reset to 1x with "s"
-speed += 0.25  with "d"
-speed -= 0.25  with "a"
+  - Chrome
+    - `yarn run dev:chrome`
+  - Firefox
+    - `yarn run dev:firefox`
+  - Opera
+    - `yarn run dev:opera`
 
-#### Slides with no audio will be skipped in 5s/current speed
+- **Load extension in browser**
 
-## If you want to save a m3u8 video as a video-file, you can follow these steps:
-How to download a m3u8-video using VLC media player 
+- ### Chrome
 
-1. copy the video link
-2. open VLC media player
-3. Click Media->Convert/Save... or hit Ctrl+R
-4. Select Network
-5. Paste the videourl
-6. Hit convert/save...
-7. Select a prefered video profile (Video - H.264 + MP3 (MP4) recomended for Videos) and a destination file.
-8. Hit start.
-9. Watch the download progress in the VLC Video Timeline
-10. When the download is finished, you can open your destination file.
+  - Go to the browser address bar and type `chrome://extensions`
+  - Check the `Developer Mode` button to enable it.
+  - Click on the `Load Unpacked Extension…` button.
+  - Select your extension’s extracted directory.
 
-## How to install
+- ### Firefox
 
-### How to install on chrome
+  - Load the Add-on via `about:debugging` as temporary Add-on.
+  - Choose the `manifest.json` file in the extracted directory
 
-- download this repository and unzip it.
+- ### Opera
 
-- in your chrome browser, open the options menu (three dots at the top right of your screen)->more tools->extensions or simply open the URL `chrome://extensions/`
+  - Load the extension via `opera:extensions`
+  - Check the `Developer Mode` and load as unpacked from extension’s extracted directory.
 
-- check the "developer options" button at the top right of the screen. This will open a menu at the top of your screen.
+### Production
 
-- click on "Load unpacked" and **select the chrome folder** in the previously unziped project folder.
+- `yarn run build` builds the extension for all the browsers to `extension/BROWSER` directory respectively.
 
-after this, the extension will be installed.
+Note: By default the `manifest.json` is set with version `0.0.0`. The webpack loader will update the version in the build with that of the `package.json` version. In order to release a new version, update version in `package.json` and run script.
 
+If you don't want to use `package.json` version, you can disable the option [here](https://github.com/abhijithvijayan/web-extension-starter/blob/e10158c4a49948dea9fdca06592876d9ca04e028/webpack.config.js#L79).
 
-### How to install on firefox
+### Generating browser specific manifest.json
 
-Note:
+Update `source/manifest.json` file with browser vendor prefixed manifest keys
 
-Downloading and copying the Videourl is currently disabled in Firefox.
+```js
+{
+  "__chrome__name": "SuperChrome",
+  "__firefox__name": "SuperFox",
+  "__edge__name": "SuperEdge",
+  "__opera__name": "SuperOpera"
+}
+```
 
-Firefox may not support audio if the speed is above x4.
+if the vendor is `chrome` this compiles to:
 
+```js
+{
+  "name": "SuperChrome",
+}
+```
 
-- download this repository and unzip it.
+---
 
-- in your firefox browser, open the URL `about:debugging#/runtime/this-firefox`
+Add keys to multiple vendors by separating them with | in the prefix
 
-- click on Temporary Extensions->"Load Teporary Add-on..."
+```
+{
+  __chrome|opera__name: "SuperBlink"
+}
+```
 
-- **select the file `manifest.json` in the subdirectory `firefox/`** of previously unziped project folder.
+if the vendor is `chrome` or `opera`, this compiles to:
 
-after this, the extension will be installed.
+```
+{
+  "name": "SuperBlink"
+}
+```
 
-### How to install on Edge
+See the original [README](https://github.com/abhijithvijayan/wext-manifest-loader) of `wext-manifest-loader` package for more details
 
-- download this repository and unzip it.
+## Bugs
 
-- in your edge browser, open the options menu (three dots at the top right of your screen)->extensions or simply open the URL `edge://extensions/`
+Please file an issue [here](https://github.com/abhijithvijayan/web-extension-starter/issues/new) for bugs, missing documentation, or unexpected behavior.
 
-- check the "developer options" button at the bottom left of the screen. This will open a menu at the top of your screen.
+### Linting & TypeScript Config
 
-- click on "Load unpacked" and **select the chrome folder** in the previously unziped project folder.
+- Shared Eslint & Prettier Configuration - [`@abhijithvijayan/eslint-config`](https://www.npmjs.com/package/@abhijithvijayan/eslint-config)
+- Shared TypeScript Configuration - [`@abhijithvijayan/tsconfig`](https://www.npmjs.com/package/@abhijithvijayan/tsconfig)
 
-after this, the extension will be installed.
+## License
 
-
-## Changelog
-
-##### 2021-04-13
-- Changed profile picture
-- added +-10s with j/k buttons (currently only supported on the viewed page itself, not on the opend popup) 
-
-##### 2021-04-12
-- Added Support for H5P Videos like in PFP
-- Added Hotkeys (A,S,D)
+MIT © [Abhijith Vijayan](https://abhijithvijayan.in)
