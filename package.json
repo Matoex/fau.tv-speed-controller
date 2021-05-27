@@ -1,18 +1,23 @@
 {
-  "name": "web-extension-starter",
+  "name": "fau-browser-extension",
   "version": "2.0.0",
-  "description": "Web extension starter using react and typescript",
+  "description": "Controls the playback speed of your FAU.tv video and more",
   "private": true,
-  "repository": "https://github.com/abhijithvijayan/web-extension-starter.git",
-  "author": {
-    "name": "abhijithvijayan",
-    "email": "email@abhijithvijayan.in",
-    "url": "https://abhijithvijayan.in"
-  },
-  "license": "MIT",
+  "repository": "https://github.com/Matoex/fau.tv-speed-controller",
+  "contributers": [
+    {
+      "name": "Tobias Gessler",
+      "url": "https://github.com/tobiges"
+    },
+    {
+      "name": "Matthias Bretting",
+      "url": "https://github.com/Matoex"
+    }
+  ],
+  "license": "GNU General Public License v3.0",
   "engines": {
     "node": ">=10.0.0",
-    "yarn": ">= 1.0.0"
+    "npm": ">= 6.0.0"
   },
   "scripts": {
     "dev:chrome": "cross-env NODE_ENV=development cross-env TARGET_BROWSER=chrome webpack --watch",
@@ -21,12 +26,15 @@
     "build:chrome": "cross-env NODE_ENV=production cross-env TARGET_BROWSER=chrome webpack",
     "build:firefox": "cross-env NODE_ENV=production cross-env TARGET_BROWSER=firefox webpack",
     "build:opera": "cross-env NODE_ENV=production cross-env TARGET_BROWSER=opera webpack",
-    "build": "yarn run build:chrome && yarn run build:firefox && yarn run build:opera",
+    "build": "npm run build:chrome && npm run build:firefox && npm run build:opera",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "@fontsource/roboto": "^4.3.0",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "advanced-css-reset": "^1.2.2",
     "emoji-log": "^1.0.2",
     "react": "^17.0.1",
@@ -58,7 +66,7 @@
     "copy-webpack-plugin": "^6.3.1",
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.1",
-    "eslint": "^7.11.0",
+    "eslint": "^7.27.0",
     "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.3.1",

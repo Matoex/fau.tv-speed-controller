@@ -1,54 +1,84 @@
 import * as React from 'react';
-import {browser, Tabs} from 'webextension-polyfill-ts';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import Input from '@material-ui/core/Input';
+// import {browser, Tabs} from 'webextension-polyfill-ts';
+// import './styles.scss';
 
-import './styles.scss';
+const useStyles = makeStyles({
+  root: {
+    width: 250,
+  },
+  input: {
+    width: 42,
+  },
+});
 
-function openWebPage(url: string): Promise<Tabs.Tab> {
-  return browser.tabs.create({url});
-}
+// function openWebPage(url: string): Promise<Tabs.Tab> {
+//   return browser.tabs.create({url});
+// }
 
 const Popup: React.FC = () => {
+  const classes = useStyles();
+  const [value, setValue] = React.useState<number | string | Array<number | string>>(30);
+
+  const handleSliderChange = (_event: any, newValue: number | number[]) => {
+    setValue(newValue);
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value === '' ? '' : Number(event.target.value));
+  };
+
+  const handleBlur = () => {
+    if (value < 0) {
+      setValue(0);
+    } else if (value > 100) {
+      setValue(100);
+    }
+  };
+
   return (
-    <section id="popup">
-      <h2>WEB-EXTENSION-STARTER</h2>
-      <button
-        id="options__button"
-        type="button"
-        onClick={(): Promise<Tabs.Tab> => {
-          return openWebPage('options.html');
-        }}
-      >
-        Options Page
-      </button>
-      <div className="links__holder">
-        <ul>
-          <li>
-            <button
-              type="button"
-              onClick={(): Promise<Tabs.Tab> => {
-                return openWebPage(
-                  'https://github.com/abhijithvijayan/web-extension-starter'
-                );
-              }}
-            >
-              GitHub
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              onClick={(): Promise<Tabs.Tab> => {
-                return openWebPage(
-                  'https://www.buymeacoffee.com/abhijithvijayan'
-                );
-              }}
-            >
-              Buy Me A Coffee
-            </button>
-          </li>
-        </ul>
-      </div>
-    </section>
+    // <div id="popup">
+    //   <input className="rangeText" type="number" id="rangeText" value="-1.0"/>
+    //   <input type="range" min="0" max="4" step="0.1" defaultValue="1" className="slider" id="playbackSlider"/>
+    //   <button id="resetButton">Reset</button>
+    //   <button id="copyLinkButton">Copy Video Link</button>
+    //   <button id="downloadVideoButton">Download Video</button>
+    // </div>
+
+    <div className={classes.root}>
+      <Typography id="input-slider" gutterBottom>
+        Volume
+      </Typography>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs>
+          <Slider
+            value={typeof value === 'number' ? value : 0}
+            onChange={handleSliderChange}
+            aria-labelledby="input-slider"
+          />
+        </Grid>
+        <Grid item>
+          <Input
+            className={classes.input}
+            value={value}
+            margin="dense"
+            onChange={handleInputChange}
+            onBlur={handleBlur}
+            inputProps={{
+              step: 10,
+              min: 0,
+              max: 100,
+              type: 'number',
+              'aria-labelledby': 'input-slider',
+            }}
+          />
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 

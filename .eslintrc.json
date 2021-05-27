@@ -19,16 +19,26 @@
 		"max-classes-per-file": "off",
 		"node/no-missing-import": "off",
 		"node/no-unpublished-import": "off",
-		"node/no-unsupported-features/es-syntax": ["error", {
-			"ignores": ["modules"]
-		}]
+		"node/no-unsupported-features/es-syntax": [
+			"error",
+			{
+				"ignores": [
+					"modules"
+				]
+			}
+		],
+		"@typescript-eslint/explicit-function-return-type": {
+			"allowExpressions": true
+		}
 	},
 	"env": {
 		"webextensions": true
 	},
 	"settings": {
 		"node": {
-			"tryExtensions": [".tsx"] // append tsx to the list as well
+			"tryExtensions": [
+				".tsx"
+			] // append tsx to the list as well
 		}
 	}
 }
